@@ -19,17 +19,17 @@ ten_bo_phan varchar(45)
 );
 
 create table nhan_vien(
-ma_nhan_vien int primary key not null unique,
+ma_nhan_vien int primary key,
 ho_ten varchar(45) not null,
 ngay_sinh date not null,
-so_cmnd varchar(45) not null unique,
+so_cmnd varchar(45) not null,
 luong double not null,
-so_dien_thoai varchar(45) not null unique,
-email varchar(45) not null unique,
-dia_chi varchar(45) not null,
-ma_vi_tri int not null,
-ma_trinh_do int not null,
-ma_bo_phan int not null,
+so_dien_thoai varchar(45) not null,
+email varchar(45),
+dia_chi varchar(45),
+ma_vi_tri int,
+ma_trinh_do int,
+ma_bo_phan int,
 foreign key(ma_vi_tri) references vi_tri(ma_vi_tri),
 foreign key(ma_trinh_do) references trinh_do(ma_trinh_do),
 foreign key(ma_bo_phan) references bo_phan(ma_bo_phan)
@@ -41,15 +41,15 @@ ten_loai_khach varchar(45)
 );
 
 create table khach_hang(
-ma_khach_hang int primary key not null unique,
+ma_khach_hang int primary key,
 ho_ten varchar(45) not null,
 ngay_sinh date not null,
 gioi_tinh bit(1) not null,
-so_cmnd varchar(45) not null unique,
-so_dien_thoai varchar(45) not null unique,
-email varchar(45) not null unique,
-dia_chi varchar(45) not null,
-ma_loai_khach int  not null,
+so_cmnd varchar(45) not null,
+so_dien_thoai varchar(45) not null,
+email varchar(45),
+dia_chi varchar(45),
+ma_loai_khach int,
 foreign key(ma_loai_khach) references loai_khach(ma_loai_khach)
 );
 
@@ -64,12 +64,12 @@ ten_loai_dich_vu varchar(45)
 );
 
 create table dich_vu(
-ma_dich_vu int primary key not null unique,
+ma_dich_vu int primary key,
 ten_dich_vu varchar(45) not null,
-dien_tich int not null,
+dien_tich int,
 chi_phi_thue double not null,
-so_nguoi_toi_da int not null,
-tieu_chuan_phong varchar(45) not null,
+so_nguoi_toi_da int,
+tieu_chuan_phong varchar(45),
 mo_ta_tien_nghi_khac varchar(45),
 dien_tich_ho_boi double,
 so_tang int,
@@ -81,13 +81,13 @@ foreign key(ma_loai_dich_vu) references loai_dich_vu(ma_loai_dich_vu)
 );
 
 create table hop_dong(
-ma_hop_dong int primary key not null unique,
+ma_hop_dong int primary key,
 ngay_lam_hop_dong datetime not null,
 ngay_ket_thuc datetime not null,
 tien_dat_coc double not null,
-ma_nhan_vien int not null,
-ma_khach_hang int not null,
-ma_dich_vu int not null,
+ma_nhan_vien int,
+ma_khach_hang int,
+ma_dich_vu int,
 foreign key(ma_nhan_vien) references nhan_vien(ma_nhan_vien),
 foreign key(ma_khach_hang) references khach_hang(ma_khach_hang),
 foreign key(ma_dich_vu) references dich_vu(ma_dich_vu)
@@ -95,17 +95,17 @@ foreign key(ma_dich_vu) references dich_vu(ma_dich_vu)
 
 create table dich_vu_di_kem(
 ma_dich_vu_di_kem int primary key,
-ten_dich_vu_di_kem varchar(45),
-gia double,
-don_vi varchar(10),
+ten_dich_vu_di_kem varchar(45) not null,
+gia double not null,
+don_vi varchar(10) not null,
 trang_thai varchar(45)
 );
 
 create table hop_dong_chi_tiet(
-ma_hop_dong_chi_tiet int primary key not null unique,
+ma_hop_dong_chi_tiet int primary key,
 so_luong int not null,
-ma_hop_dong int not null,
-ma_dich_vu_di_kem int not null,
+ma_hop_dong int,
+ma_dich_vu_di_kem int,
 foreign key(ma_hop_dong) references hop_dong(ma_hop_dong),
 foreign key(ma_dich_vu_di_kem) references dich_vu_di_kem(ma_dich_vu_di_kem)
 );
@@ -176,11 +176,11 @@ values
 (2,'House'),
 (3,'Room');
 
- insert into dich_vu(ma_dich_vu,ten_dich_vu, dien_tich, chi_phi_thue, so_nguoi_toi_da, tieu_chuan_phong, mo_ta_tien_nghi_khac, dien_tich_ho_boi, so_tang, ma_kieu_thue, ma_loai_dich_vu)
- values
- (1,'Villa Beach Front','25000','10000000',10,'vip','Có hồ bơi',500,4,3,1),
- (2,'House Princess 01','14000','5000000',7,'vip','Có thêm bếp nướng',null,3,2,2),
- (3,'Room Twin 01','5000','1000000',2,'vip','Có tivi',null,null,4,3),
+insert into dich_vu(ma_dich_vu,ten_dich_vu, dien_tich, chi_phi_thue, so_nguoi_toi_da, tieu_chuan_phong, mo_ta_tien_nghi_khac, dien_tich_ho_boi, so_tang, ma_kieu_thue, ma_loai_dich_vu)
+values
+(1,'Villa Beach Front','25000','10000000',10,'vip','Có hồ bơi',500,4,3,1),
+(2,'House Princess 01','14000','5000000',7,'vip','Có thêm bếp nướng',null,3,2,2),
+(3,'Room Twin 01','5000','1000000',2,'vip','Có tivi',null,null,4,3),
 (4,'Villa No Beach Front','22000','9000000',8,'normal','Có hồ bơi',300,3,3,1),
 (5,'House Princess 02','10000','4000000',5,'normal','Có thêm bếp nướng',null,2,3,2),
 (6,'Room Twin 02','3000','900000',2,'normal','Có tivi',null,null,4,3);
