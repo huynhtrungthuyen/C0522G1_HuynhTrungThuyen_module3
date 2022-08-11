@@ -16,7 +16,8 @@ where (year(curdate()) - year(ngay_sinh) between 18 and 50) and (dia_chi like '%
 select khach_hang.ma_khach_hang, khach_hang.ho_ten, count(hop_dong.ma_khach_hang) as so_lan_dat_phong
 from khach_hang 
 join hop_dong on khach_hang.ma_khach_hang = hop_dong.ma_khach_hang
-where khach_hang.ma_loai_khach = 1
+join loai_khach on loai_khach.ma_loai_khach = khach_hang.ma_loai_khach
+where loai_khach.ten_loai_khach = 'Diamond'
 group by ma_khach_hang
 order by so_lan_dat_phong;
 
@@ -24,7 +25,7 @@ order by so_lan_dat_phong;
 -- Chi Phí Thuê + Số Lượng * Giá, với Số Lượng và Giá là từ bảng dich_vu_di_kem, hop_dong_chi_tiet) cho tất cả các khách hàng đã từng đặt phòng. 
 -- (những khách hàng nào chưa từng đặt phòng cũng phải hiển thị ra).
 select khach_hang.ma_khach_hang, khach_hang.ho_ten, loai_khach.ten_loai_khach, hop_dong.ma_hop_dong, dich_vu.ten_dich_vu, hop_dong.ngay_lam_hop_dong, hop_dong.ngay_ket_thuc, 
-(ifnull(dich_vu.chi_phi_thue, 0) + ifnull(dich_vu_di_kem.gia, 0) * ifnull(hop_dong_chi_tiet.so_luong, 0)) as tong_tien
+(ifnull(dich_vu.chi_phi_thue, 0) + sum(ifnull(dich_vu_di_kem.gia, 0) * ifnull(hop_dong_chi_tiet.so_luong, 0))) as tong_tien
 -- (coalesce(dich_vu.chi_phi_thue,0) + coalesce((hop_dong_chi_tiet.so_luong * dich_vu_di_kem.gia),0)) as tong_tien
 from khach_hang
 left join loai_khach on khach_hang.ma_loai_khach = loai_khach.ma_loai_khach
