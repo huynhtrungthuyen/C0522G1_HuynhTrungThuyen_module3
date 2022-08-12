@@ -21,7 +21,7 @@ left join dich_vu dv on hd.ma_dich_vu = dv.ma_dich_vu
 left join hop_dong_chi_tiet hdct on hd.ma_hop_dong = hdct.ma_hop_dong
 where (year(hd.ngay_lam_hop_dong) = 2020 and (month(hd.ngay_lam_hop_dong) in (10, 11, 12))) and hd.ma_hop_dong not in (
 select hd.ma_hop_dong
-from hop_dong hd12
+from hop_dong hd
 where year(hd.ngay_lam_hop_dong) = 2021 and (month(hd.ngay_lam_hop_dong) between 1 and 6))
 group by hd.ma_hop_dong;
 

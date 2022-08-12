@@ -30,9 +30,10 @@ dia_chi varchar(45),
 ma_vi_tri int,
 ma_trinh_do int,
 ma_bo_phan int,
+is_delete bit default 0,
 foreign key(ma_vi_tri) references vi_tri(ma_vi_tri),
 foreign key(ma_trinh_do) references trinh_do(ma_trinh_do),
-foreign key(ma_bo_phan) references bo_phan(ma_bo_phan)
+foreign key(ma_bo_phan) references bo_phan(ma_bo_phan) 
 );
 
 create table loai_khach(
@@ -50,6 +51,7 @@ so_dien_thoai varchar(45) not null,
 email varchar(45),
 dia_chi varchar(45),
 ma_loai_khach int,
+is_delete bit default 0,
 foreign key(ma_loai_khach) references loai_khach(ma_loai_khach)
 );
 
