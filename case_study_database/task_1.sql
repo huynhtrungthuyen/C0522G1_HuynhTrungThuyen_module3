@@ -19,7 +19,7 @@ ten_bo_phan varchar(45)
 );
 
 create table nhan_vien(
-ma_nhan_vien int primary key,
+ma_nhan_vien int primary key auto_increment,
 ho_ten varchar(45) not null,
 ngay_sinh date not null,
 so_cmnd varchar(45) not null,
@@ -42,7 +42,7 @@ ten_loai_khach varchar(45)
 );
 
 create table khach_hang(
-ma_khach_hang int primary key,
+ma_khach_hang int primary key auto_increment,
 ho_ten varchar(45) not null,
 ngay_sinh date not null,
 gioi_tinh bit(1) not null,
@@ -66,7 +66,7 @@ ten_loai_dich_vu varchar(45)
 );
 
 create table dich_vu(
-ma_dich_vu int primary key,
+ma_dich_vu int primary key auto_increment,
 ten_dich_vu varchar(45) not null,
 dien_tich int,
 chi_phi_thue double not null,
@@ -78,18 +78,20 @@ so_tang int,
 dich_vu_mien_phi_di_kem text,
 ma_kieu_thue int,
 ma_loai_dich_vu int,
+is_delete bit default 0,
 foreign key(ma_kieu_thue) references kieu_thue(ma_kieu_thue),
 foreign key(ma_loai_dich_vu) references loai_dich_vu(ma_loai_dich_vu)
 );
 
 create table hop_dong(
-ma_hop_dong int primary key,
+ma_hop_dong int primary key auto_increment,
 ngay_lam_hop_dong datetime not null,
 ngay_ket_thuc datetime not null,
 tien_dat_coc double not null,
 ma_nhan_vien int,
 ma_khach_hang int,
 ma_dich_vu int,
+is_delete bit default 0,
 foreign key(ma_nhan_vien) references nhan_vien(ma_nhan_vien),
 foreign key(ma_khach_hang) references khach_hang(ma_khach_hang),
 foreign key(ma_dich_vu) references dich_vu(ma_dich_vu)
@@ -197,7 +199,7 @@ values
 (6,'2021-06-01','2021-06-03','0',7,7,6),
 (7,'2021-09-02','2021-09-05','100000',7,4,4),
 (8,'2021-06-17','2021-06-18','150000',3,4,1),
-(9,'2020-11-19','2020-11-19','0',3,4,4),
+(9,'2020-11-19','2020-11-19','0',3,4,3),
 (10,'2021-04-12','2021-04-14','0',10,3,5),
 (11,'2021-04-25','2021-04-25','0',2,2,1),
 (12,'2021-05-25','2021-05-27','0',7,10,1);

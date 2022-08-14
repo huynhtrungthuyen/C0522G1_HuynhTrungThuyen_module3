@@ -43,7 +43,7 @@ from products;
 -- Tiến hành sửa đổi view.
 update w_products set product_price = 40000 where product_name = 'Vàng mã';
 
-select * from products;
+select * from w_products;
 
 -- tiến hành xoá view
 drop view w_products;
