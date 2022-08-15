@@ -61,18 +61,30 @@ select * from hop_dong;
 -- 25. Tạo Trigger có tên tr_xoa_hop_dong khi xóa bản ghi trong bảng hop_dong thì hiển thị tổng số lượng bản ghi còn lại
 -- có trong bảng hop_dong ra giao diện console của database.
 -- Lưu ý: Đối với MySQL thì sử dụng SIGNAL hoặc ghi log thay cho việc ghi ở console.
+drop table if exists lich_su_xoa_hop_dong;
+create table lich_su_xoa_hop_dong(
+ma_hop_dong_bi_xoa int,
+so_luong_hop_dong_con_lai int,
+ngay_update datetime);
+
 drop trigger if exists tr_xoa_hop_dong;
 delimiter //
 create trigger tr_xoa_hop_dong
 after update on hop_dong for each row
 begin
-	declare c int ;
-	set c = (select count(ma_hop_dong) from hop_dong where is_delete=0);
-	signal sqlstate '45000'
-	set message_text = c;
+	declare so_luong int;
+	if (old.is_delete <> 0) then
+		signal sqlstate '45000'
+		set message_text = 'Hợp đồng đã bị xóa.';
+		else
+			set @so_luong = (select count(*) from hop_dong where is_delete=0);
+			insert into lich_su_xoa_hop_dong
+			values (old.ma_hop_dong, @so_luong, now());
+	end if;
 end //
 delimiter ;
 
-update hop_dong set is_delete = 1 where ma_hop_dong = 12;
+update hop_dong set is_delete = 1 where ma_hop_dong = 5;
+select * from lich_su_xoa_hop_dong;
 
 select * from hop_dong;

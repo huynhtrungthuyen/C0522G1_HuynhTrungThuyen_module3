@@ -4,6 +4,15 @@ use case_study_database;
 -- với quy tắc sau: Ngày kết thúc hợp đồng phải lớn hơn ngày làm hợp đồng ít nhất là 2 ngày. Nếu dữ liệu hợp lệ thì cho phép cập nhật, 
 -- nếu dữ liệu không hợp lệ thì in ra thông báo “Ngày kết thúc hợp đồng phải lớn hơn ngày làm hợp đồng ít nhất là 2 ngày” trên console của database.
 -- Lưu ý: Đối với MySQL thì sử dụng SIGNAL hoặc ghi log thay cho việc ghi ở console.
+drop table if exists lich_su_cap_nhat_hop_dong;
+create table lich_su_cap_nhat_hop_dong(
+ma_hop_dong int,
+ngay_lam_hop_dong datetime,
+ngay_ket_thuc_hop_dong_cu datetime,
+ngay_ket_thuc_hop_dong_moi datetime,
+ngay_update datetime);
+
+drop trigger if exists tr_cap_nhat_hop_dong;
 delimiter //
 create trigger tr_cap_nhat_hop_dong
 before update on hop_dong for each row
@@ -11,15 +20,17 @@ begin
 	if (timestampdiff(day, old.ngay_lam_hop_dong, new.ngay_ket_thuc) < 2) then
 		signal sqlstate '45000'
 		set message_text = 'Ngày kết thúc hợp đồng phải lớn hơn ngày làm hợp đồng ít nhất là 2 ngày.';
+        else
+			insert into lich_su_cap_nhat_hop_dong
+			values (old.ma_hop_dong, old.ngay_lam_hop_dong, old.ngay_ket_thuc, new.ngay_ket_thuc, now());
 	end if;
 end //
 delimiter ;
 
-update hop_dong set ngay_ket_thuc = '2022-08-17' where ma_hop_dong = 13;
+update hop_dong set ngay_ket_thuc = '2022-08-18' where ma_hop_dong = 7;
+select * from lich_su_cap_nhat_hop_dong;
 
 select * from hop_dong;
-
-drop trigger if exists tr_cap_nhat_hop_dong;
 
 -- 27a. Tạo Function func_dem_dich_vu: Đếm các dịch vụ đã được sử dụng với tổng tiền là > 2.000.000 VNĐ.
 delimiter //
