@@ -10,7 +10,7 @@ ma_hop_dong int,
 ngay_lam_hop_dong datetime,
 ngay_ket_thuc_hop_dong_cu datetime,
 ngay_ket_thuc_hop_dong_moi datetime,
-ngay_update datetime);
+ngay_cap_nhat datetime);
 
 drop trigger if exists tr_cap_nhat_hop_dong;
 delimiter //

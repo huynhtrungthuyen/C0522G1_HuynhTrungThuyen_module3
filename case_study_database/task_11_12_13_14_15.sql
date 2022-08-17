@@ -7,7 +7,7 @@ join hop_dong_chi_tiet hdct on dvdk.ma_dich_vu_di_kem = hdct.ma_dich_vu_di_kem
 join hop_dong hd on hd.ma_hop_dong = hdct.ma_hop_dong
 join khach_hang kh on kh.ma_khach_hang = hd.ma_khach_hang
 join loai_khach lk on lk.ma_loai_khach = kh.ma_loai_khach
-where lk.ten_loai_khach = 'Diamond' and (kh.dia_chi like "% Vinh" or kh.dia_chi like "% Quảng Ngãi");
+where lk.ten_loai_khach = 'Diamond' and (kh.dia_chi like "%Vinh" or kh.dia_chi like "%Quảng Ngãi");
 
 -- 12. Hiển thị thông tin ma_hop_dong, ho_ten (nhân viên), ho_ten (khách hàng), so_dien_thoai (khách hàng), ten_dich_vu, so_luong_dich_vu_di_kem 
 -- (được tính dựa trên việc sum so_luong ở dich_vu_di_kem), tien_dat_coc của tất cả các dịch vụ đã từng được khách hàng đặt vào 3 tháng cuối năm 2020 

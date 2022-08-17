@@ -65,7 +65,7 @@ drop table if exists lich_su_xoa_hop_dong;
 create table lich_su_xoa_hop_dong(
 ma_hop_dong_bi_xoa int,
 so_luong_hop_dong_con_lai int,
-ngay_update datetime);
+ngay_cap_nhat datetime);
 
 drop trigger if exists tr_xoa_hop_dong;
 delimiter //
