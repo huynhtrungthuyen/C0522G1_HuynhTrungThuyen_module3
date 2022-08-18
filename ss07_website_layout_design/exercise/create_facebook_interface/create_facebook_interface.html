@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-
-    <!--    <link rel="stylesheet" href="create_facebook_interface.css">-->
+    
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -18,7 +17,12 @@
             font-weight: bold;
             font-size: 30px;
             color: blue;
-            margin: 30px auto;
+            margin-top: 0;
+        }
+
+        .head .mid p {
+            margin: auto;
+            text-align: center;
         }
 
         a {
@@ -28,7 +32,6 @@
         input {
             width: 400px;
             height: 30px;
-            margin-top: 0;
         }
 
         .head img {
@@ -42,7 +45,33 @@
         }
 
         .body {
-            background-color: gray;
+            background-color: #e4e8ee;
+        }
+
+        .body .logo .list {
+            height: 60px;
+        }
+
+        .body .logo .list p {
+            text-align: center;
+            margin: 0;
+        }
+
+        .body .left .list {
+            height: 34px;
+        }
+
+        .body .left .list h4 {
+            margin-top: 25px;
+        }
+
+        .body .left .list h4 a {
+            text-align: left;
+            color: black;
+        }
+
+        .body .right a {
+            color: black;
         }
 
         .row {
@@ -71,7 +100,6 @@
 
         .col-l-6 {
             width: 50%;
-            text-align: center;
         }
 
         .col-l-7 {
@@ -104,7 +132,7 @@
 
 <div class="row head">
     <div class="col-l-3 left">
-        <p><a href="https://www.facebook.com/">facebook</a></p>
+        <p><a href="https://www.facebook.com/"><img src="img/fb.png" alt=""></a></p>
     </div>
 
     <div class="col-l-6 mid">
@@ -115,24 +143,146 @@
 
     <div class="col-l-3 right">
         <p>
-            <a href="#"><img src="mess.png" alt=""></a>
-            <a href="#"><img src="note.png" alt=""></a>
-            <a href="#"><img src="ava.png" alt=""></a>
+            <a href="#"><img src="img/mess.png" alt=""></a>
+            <a href="#"><img src="img/note.png" alt=""></a>
+            <a href="#"><img src="img/ava.png" alt=""></a>
         </p>
     </div>
 </div>
 
 <div class="row body">
-    <div class="col-l-3">
-        aa
+    <div class="col-l-1 logo">
+        <div class="list">
+            <p><a href="#"><img src="img/home.png" alt=""></a></p>
+        </div>
+
+        <div class="list">
+            <p><a href="#"><img src="img/avar.png" alt=""></a></p>
+        </div>
+
+        <div class="list">
+            <p><a href="#"><img src="img/menu.png" alt=""></a></p>
+        </div>
+
+        <div class="list">
+            <p><a href="#"><img src="img/watch.png" alt=""></a></p>
+        </div>
+
+        <div class="list">
+            <p><a href="#"><img src="img/stone.png" alt=""></a></p>
+        </div>
+
+        <div class="list">
+            <p><a href="#"><img src="img/game.png" alt=""></a></p>
+        </div>
+
+        <div class="list">
+            <p><a href="#"><img src="img/group.png" alt=""></a></p>
+        </div>
+
+        <div class="list">
+            <p><a href="#"><img src="img/grab.png" alt=""></a></p>
+        </div>
+
+        <div class="list">
+            <p><a href="#"><img src="img/gay.png" alt=""></a></p>
+        </div>
+
+        <div class="list">
+            <p><a href="#"><img src="img/my.png" alt=""></a></p>
+        </div>
     </div>
 
-    <div class="col-l-6">
+    <div class="col-l-2 left">
+        <div class="list">
+            <h4><a href="#">Trang chủ</a></h4>
+        </div>
 
+        <div class="list">
+            <h4><a href="#">Huỳnh Trung Thuyên</a></h4>
+        </div>
+
+        <div class="list">
+            <h4><a href="#">Menu</a></h4>
+        </div>
+
+        <div class="list">
+            <h4><a href="#">Watch</a></h4>
+        </div>
+
+        <div class="list">
+            <h4><a href="#">Marketplace</a></h4>
+        </div>
+
+        <div class="list">
+            <h4><a href="#">Trò chơi</a></h4>
+        </div>
+
+        <div class="list">
+            <h4><a href="#">Nhóm</a></h4>
+        </div>
+
+        <div class="list">
+            <h4><a href="#">Grab</a></h4>
+        </div>
+
+        <div class="list">
+            <h4><a href="#">Phòng chống trổ BÓNG</a></h4>
+        </div>
+
+        <div class="list">
+            <h4><a href="#">Hội những người CRUSH tôi</a></h4>
+        </div>
     </div>
 
-    <div class="col-l-3">
+    <div class="col-l-6 mid">
+        <img src="img/body.png" alt="">
+    </div>
 
+    <div class="col-l-3 right">
+        <div>
+            <h3>Người liên hệ</h3>
+        </div>
+
+        <div class="row">
+            <div class="col-l-3">
+                <a href="#"><img src="img/name1.png" alt=""></a>
+            </div>
+
+            <div class="col-l-9">
+                <h4><a href="#">Hồ Thị Thủy Lợi</a></h4>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-l-3">
+                <a href="#"><img src="img/name2.png" alt=""></a>
+            </div>
+
+            <div class="col-l-9">
+                <h4><a href="#">Hồ Hải Simp Chúa</a></h4>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-l-3">
+                <a href="#"><img src="img/name3.png" alt=""></a>
+            </div>
+
+            <div class="col-l-9">
+                <h4><a href="#">Hồ Văn Tý</a></h4>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-l-3">
+                <a href="#"><img src="img/name4.png" alt=""></a>
+            </div>
+
+            <div class="col-l-9">
+                <h4><a href="#">Null</a></h4>
+            </div>
+        </div>
     </div>
 </div>
 </body>
