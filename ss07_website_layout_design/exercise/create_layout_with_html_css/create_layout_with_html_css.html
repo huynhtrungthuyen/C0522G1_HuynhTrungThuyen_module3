@@ -6,7 +6,7 @@
 
     <style>
         body {
-            font-family: Verdana,sans-serif;
+            font-family: Verdana, sans-serif;
             font-size: 0.9em;
         }
 
@@ -20,6 +20,7 @@
             margin: 5px;
             padding: 10px;
             background-color: lightgrey;
+            width: 65%;
         }
 
         article {
@@ -36,6 +37,32 @@
             display: inline;
             margin: 5px;
         }
+
+        aside {
+            width: 35%;
+            margin: 0px 30px;
+            text-align: justify;
+        }
+
+        aside img {
+            width: 100%;
+        }
+
+        .row {
+            height: 540px;
+            display: flex;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        nav ul li a:hover {
+            color: gold;
+            background-color: brown;
+            margin: 0;
+        }
     </style>
 
 </head>
@@ -46,25 +73,52 @@
 
 <nav>
     <ul>
-        <li>News</li>
-        <li>Sports</li>
-        <li>Weather</li>
+        <li><a href="#">News</a></li>
+        <li><a href="#">Sports</a></li>
+        <li><a href="#">Weather</a></li>
     </ul>
 </nav>
 
-<section>
-    <h2>News Section</h2>
-    <article>
+<div class="row">
+    <section>
+        <h2>News Section</h2>
+        <article>
+            <h2>News Article</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque in porta lorem. Morbi condimentum
+                est nibh, et consectetur tortor feugiat at.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque in porta lorem. Morbi condimentum
+                est nibh, et consectetur tortor feugiat at.
+            </p>
+        </article>
+        <article>
+            <h2>News Article</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque in porta lorem. Morbi condimentum
+                est nibh, et consectetur tortor feugiat at.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque in porta lorem. Morbi condimentum
+                est nibh, et consectetur tortor feugiat at.
+            </p>
+        </article>
+    </section>
+
+    <aside>
         <h2>News Article</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque in porta lorem. Morbi condimentum est nibh, et consectetur tortor feugiat at.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque in porta lorem. Morbi condimentum est nibh, et consectetur tortor feugiat at.</p>
-    </article>
-    <article>
-        <h2>News Article</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque in porta lorem. Morbi condimentum est nibh, et consectetur tortor feugiat at.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque in porta lorem. Morbi condimentum est nibh, et consectetur tortor feugiat at.</p>
-    </article>
-</section>
+        <p><img src="img1.jpg" alt=""/></p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque in porta lorem. Morbi condimentum
+            est nibh, et consectetur tortor feugiat at.
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque in porta lorem. Morbi condimentum
+            est nibh, et consectetur tortor feugiat at.
+        </p>
+    </aside>
+</div>
 
 <footer>
     <p>&copy; 2014 Monday Times. All rights reserved.</p>
