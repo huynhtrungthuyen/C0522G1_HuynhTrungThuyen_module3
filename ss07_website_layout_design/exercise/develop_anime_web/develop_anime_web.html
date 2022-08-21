@@ -14,10 +14,6 @@
             background-color: #e0dada;
         }
 
-        img {
-            height: 50px;
-        }
-
         ul {
             text-align: center;
         }
@@ -36,6 +32,12 @@
         section {
             width: 35%;
             margin: 30px;
+            overflow: hidden;
+            height: 800px;
+        }
+
+        section:hover {
+            overflow: scroll;
         }
 
         aside {
@@ -70,13 +72,50 @@
         footer {
             text-align: center;
         }
+
+        #fix {
+            height: 55px;
+            position: fixed;
+            border: solid crimson;
+            margin: 5px;
+        }
+
+        header {
+            height: 50px;
+        }
+
+        h3 {
+            margin-top: 0;
+            border: solid green;
+            padding: 5px;
+            /*position: fixed;*/
+            /*top: inherit;*/
+            background-color: #e4e8ee;
+        }
+
+        header p {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        span {
+            text-align: center;
+            font-weight: bold;
+            font-size: 30px;
+        }
     </style>
 
 </head>
 <body>
-
+<img id="fix" src="img.gif" alt="">
 <header>
-    <img src="img.gif" alt="">
+    <p>
+        <span style="color: crimson">A </span>
+        <span style="color: #ffb700">N </span>
+        <span style="color: green">I </span>
+        <span style="color: blue">M </span>
+        <span style="color: #a714dc">E</span>
+    </p>
 </header>
 
 <nav>
@@ -90,6 +129,10 @@
 
 <div class="body">
     <section>
+        <article>
+            <h3>Danh sách Anime hay</h3>
+        </article>
+
         <article>
             <a href="https://anime47.com/"><img src="khu-vuon-ngon-tu.jpg"></a><br>
             <a href="https://anime47.com/">Khu vườn ngôn từ.</a>
@@ -112,7 +155,10 @@
     </section>
 
     <aside>
-        <iframe width="890" height="480" src="https://www.youtube.com/embed/SavhHnWla6c" title="Naruto Shippuden Opening 6 | Sign (HD)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="890" height="480" src="https://www.youtube.com/embed/SavhHnWla6c"
+                title="Naruto Shippuden Opening 6 | Sign (HD)" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
         <p>
             Naruto Shippuden – ナルト 疾風伝 (tạm dịch: Naruto truyền kỳ) là bộ anime nối tiếp với bộ anime
             Naruto ban đầu và có mặt trong bộ manga Naruto từ tập 28 trở đi. Sau khi huấn luyện 2 năm rưỡi với Jiraiya,
