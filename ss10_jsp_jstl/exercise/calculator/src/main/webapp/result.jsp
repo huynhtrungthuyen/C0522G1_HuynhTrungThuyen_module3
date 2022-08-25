@@ -35,7 +35,6 @@
             <h4>${param.firstOperand} / ${param.secondOperand} = ${division}</h4>
         </c:if>
     </c:when>
-
 </c:choose>
 </body>
 </html>
