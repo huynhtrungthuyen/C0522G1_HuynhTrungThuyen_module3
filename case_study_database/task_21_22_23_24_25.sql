@@ -54,7 +54,7 @@ begin
 end //
 delimiter ;
 
-call sp_them_moi_hop_dong('2022-08-16', '2022-08-17', 1000000, 10, 1, 1);
+call sp_them_moi_hop_dong('2022-08-16', '2022-08-16', 1000000, 1, 1, 1);
 
 select * from hop_dong;
 
