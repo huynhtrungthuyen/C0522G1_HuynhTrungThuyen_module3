@@ -36,8 +36,36 @@ public class UserServlet extends HttpServlet {
             case "view":
                 viewUser(request, response);
                 break;
+            case "search":
+                searchByCountry(request, response);
+                break;
+            case "sort":
+                sortByName(request, response);
+                break;
             default:
                 listUser(request, response);
+        }
+    }
+
+    private void sortByName(HttpServletRequest request, HttpServletResponse response) {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/user/list.jsp");
+        request.setAttribute("users", iUserService.sortByName());
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void searchByCountry(HttpServletRequest request, HttpServletResponse response) {
+        String countrySearch = request.getParameter("countrySearch");
+        List<User> users = iUserService.findByCountry(countrySearch);
+        request.setAttribute("users", users);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/user/list.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -175,7 +203,7 @@ public class UserServlet extends HttpServlet {
         boolean check = iUserService.insertUser(user);
         String mess = "Thêm mới người dùng thành công!";
         if (!check) {
-            mess = "thêm mới không thành cônn";
+            mess = "Thêm mới không thành công!";
         }
         request.setAttribute("mess", mess);
         showNewForm(request, response);
