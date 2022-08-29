@@ -16,3 +16,29 @@ values
 ('Dang Thi Thuy Tien', 'thuytien@gmail.com', 'China'),
 ('Vo Van Ty', 'ty2001@gmail.com', 'Thailand'),
 ('Ho Hai Hoc', 'simp.chua@gmail.com', 'Viet Nam');
+
+DELIMITER $$
+CREATE PROCEDURE find_all()
+BEGIN
+SELECT *
+FROM users;
+END$$
+DELIMITER ;
+
+
+DELIMITER $$
+CREATE PROCEDURE update_user(user_name varchar(120), user_email varchar(120), user_country varchar(120), IN user_id INT)
+BEGIN
+update users 
+set name = user_name, email = user_email, country = user_country
+ where id = user_id;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE remove_user(IN user_id INT)
+BEGIN
+delete from users
+where id = user_id;
+END$$
+DELIMITER ;

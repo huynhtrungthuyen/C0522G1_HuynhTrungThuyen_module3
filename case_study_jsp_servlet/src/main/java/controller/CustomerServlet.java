@@ -62,6 +62,22 @@ public class CustomerServlet extends HttpServlet {
     }
 
     private void showEditForm(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Customer customer = iCustomerService.findAll().get(id);
+        RequestDispatcher dispatcher;
+
+        if (customer == null) {
+            dispatcher = request.getRequestDispatcher("view/error_404.jsp");
+        } else {
+            request.setAttribute("customer", customer);
+            dispatcher = request.getRequestDispatcher("view/user/edit.jsp");
+        }
+
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void showCreateFrom(HttpServletRequest request, HttpServletResponse response) {

@@ -67,10 +67,10 @@
                         <td class="text-center">${customerType.customerTypeName}</td>
                     </c:if>
                 </c:forEach>
-                <td class="text-center"><a href="/customer?action=edit&id=${user.getId()}">
+                <td class="text-center"><a href="/customer?action=edit&id=${customer.getId()}">
                     <span class="fa-solid fa-user-pen text-primary h4 m-auto"></span>
                 </a></td>
-                <td class="text-center"><a href="/customer?action=delete&id=${user.getId()}">
+                <td class="text-center"><a href="/customer?action=delete&id=${customer.getId()}">
                     <span class="fa-solid fa-person-circle-minus text-danger h4 m-auto"></span>
                 </a></td>
             </tr>
