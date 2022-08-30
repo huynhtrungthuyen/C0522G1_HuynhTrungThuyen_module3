@@ -29,6 +29,10 @@
 
     <p class="text-center mt-3"><a href="/"><i class="fa-solid fa-house-chimney h5 mx-1"></i> Back to HOME</a></p>
 
+    <p class="text-center">
+        <a href="/customer"><i class="fa-solid fa-backward"></i> Back to Customer list</a>
+    </p>
+
     <c:if test="${mess!=null}">
         <c:if test="${check}">
             <div class="justify-content-center d-flex">
@@ -42,7 +46,7 @@
         <c:if test="${!check}">
             <div class="justify-content-center d-flex">
                 <div class="alert alert-danger alert-dismissible fade show w-50">
-                    <strong>Congratulations!</strong> ${mess}
+                    <strong>Sorry!</strong> ${mess}
                     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                 </div>
             </div>
@@ -71,7 +75,7 @@
                 <label class="h6">Gender:</label>
                 <div class="d-flex">
                     <label class="d-block me-4">
-                        <input type="radio" value="1" name="gender"> Male
+                        <input type="radio" value="1" name="gender" checked> Male
                         <i class="fa-solid fa-mars"></i>
                     </label>
                     <label class="d-block">
@@ -118,11 +122,9 @@
                 <label class="h6" for="customerType">Customer Type:</label>
                 <div class="input-group">
                     <select id="customerType" class="form-control" name="customerType">
-                        <option value="1">Diamond</option>
-                        <option value="2">Platinium</option>
-                        <option value="3" selected>Gold</option>
-                        <option value="4" selected>Silver</option>
-                        <option value="5" selected>Member</option>
+                        <c:forEach var="customerType" items="${customerTypeList}">
+                            <option value="${customerType.customerTypeId}">${customerType.customerTypeName}</option>
+                        </c:forEach>
                     </select>
                     <span class="input-group-text"><i class="fa-solid fa-ranking-star"></i></span>
                 </div>
@@ -135,10 +137,6 @@
             </div>
         </form>
     </div>
-
-    <p class="text-center">
-        <a href="/customer"><i class="fa-solid fa-backward"></i> Back to Customer list</a>
-    </p>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"

@@ -12,8 +12,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
-    <title>Add new Customer</title>
+    <title>Update Customer</title>
     <style>
+        body {
+            background-color: #B5C8FF;
+        }
+
         a {
             text-decoration: none;
         }
@@ -25,9 +29,13 @@
 </head>
 <body>
 <div class="mx-5 px-5 pt-3">
-    <h2 class="text-center fw-bold">Add new Customer</h2>
+    <h2 class="text-center fw-bold">Update Customer</h2>
 
     <p class="text-center mt-3"><a href="/"><i class="fa-solid fa-house-chimney h5 mx-1"></i> Back to HOME</a></p>
+
+    <p class="text-center">
+        <a href="/customer"><i class="fa-solid fa-backward"></i> Back to Customer list</a>
+    </p>
 
     <c:if test="${mess!=null}">
         <c:if test="${check}">
@@ -42,7 +50,7 @@
         <c:if test="${!check}">
             <div class="justify-content-center d-flex">
                 <div class="alert alert-danger alert-dismissible fade show w-50">
-                    <strong>Congratulations!</strong> ${mess}
+                    <strong>Sorry!</strong> ${mess}
                     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                 </div>
             </div>
@@ -52,26 +60,34 @@
 
     <div class="d-flex justify-content-center">
 
-        <form class="w-50 border border-2 border-success p-3 bg-warning rounded" action="/customer?action=edit"
-              method="post">
+        <form class="w-50 border border-2 border-success p-3 bg-warning rounded" method="post">
+            <div class="form-group" hidden>
+                <label class="h6">Customer:</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" name="id" value="${customer.customerId}" readonly>
+                    <span class="input-group-text"> <i class="fa-solid fa-person-circle-question"></i></span>
+                </div>
+            </div>
+
             <div class="form-group">
                 <label for="name" class="h6">Name:</label>
                 <div class="input-group">
-                    <input type="text" id="name" class="form-control" value="${customer.customerName}" name="name">
+                    <input type="text" id="name" class="form-control" name="name" value="${customer.customerName}">
                     <span class="input-group-text"> <i class="fa-solid fa-person-circle-question"></i></span>
                 </div>
             </div>
 
             <div class="mt-3 form-group">
                 <label for="dateOfBirth" class="h6">Date of Birth:</label>
-                <input type="date" id="dateOfBirth" class="form-control" name="dateOfBirth" value="${customer.customerBirthday}">
+                <input type="date" id="dateOfBirth" class="form-control" name="dateOfBirth"
+                       value="${customer.customerBirthday}">
             </div>
 
             <div class="mt-3 form-group">
                 <label class="h6">Gender:</label>
                 <div class="d-flex">
                     <label class="d-block me-4">
-                        <input type="radio" value="1" name="gender"> Male
+                        <input type="radio" value="1" name="gender" checked> Male
                         <i class="fa-solid fa-mars"></i>
                     </label>
                     <label class="d-block">
@@ -85,7 +101,8 @@
             <div class="mt-3 form-group">
                 <label for="idCard" class="h6">Id card:</label>
                 <div class="input-group">
-                    <input type="text" id="idCard" class="form-control" value="${customer.customerIdCard}" name="idCard">
+                    <input type="text" id="idCard" class="form-control" name="idCard"
+                           value="${customer.customerIdCard}">
                     <span class="input-group-text"><i class="fa-solid fa-id-card"></i></span>
                 </div>
             </div>
@@ -93,7 +110,7 @@
             <div class="mt-3 form-group">
                 <label for="phone" class="h6">Phone number:</label>
                 <div class="input-group">
-                    <input type="text" id="phone" class="form-control" value="${customer.customerPhone}" name="phone">
+                    <input type="text" id="phone" class="form-control" name="phone" value="${customer.customerPhone}">
                     <span class="input-group-text"><i class="fa-solid fa-square-phone"></i></span>
                 </div>
             </div>
@@ -101,7 +118,7 @@
             <div class="mt-3 form-group">
                 <label for="email" class="h6">Email:</label>
                 <div class="input-group">
-                    <input type="text" id="email" class="form-control" value="${customer.customerEmail}" name="email">
+                    <input type="text" id="email" class="form-control" name="email" value="${customer.customerEmail}">
                     <span class="input-group-text"><i class="fa-solid fa-envelope-circle-check"></i></span>
                 </div>
             </div>
@@ -109,7 +126,8 @@
             <div class="mt-3 form-group">
                 <label for="address" class="h6">Address:</label>
                 <div class="input-group">
-                    <input type="text" id="address" class="form-control" value="${customer.customerAddress}" name="address">
+                    <input type="text" id="address" class="form-control" name="address"
+                           value="${customer.customerAddress}">
                     <span class="input-group-text"><i class="fa-solid fa-map-location-dot"></i></span>
                 </div>
             </div>
@@ -117,12 +135,10 @@
             <div class="mt-3 form-group">
                 <label class="h6" for="customerType">Customer Type:</label>
                 <div class="input-group">
-                    <select id="customerType" class="form-control" name="customerType" value="${customer.customerTypeId}">
-                        <option value="1">Diamond</option>
-                        <option value="2">Platinium</option>
-                        <option value="3" selected>Gold</option>
-                        <option value="4" selected>Silver</option>
-                        <option value="5" selected>Member</option>
+                    <select id="customerType" class="form-control" name="customerType">
+                        <c:forEach var="customerType" items="${customerTypeList}">
+                            <option value="${customerType.customerTypeId}">${customerType.customerTypeName}</option>
+                        </c:forEach>
                     </select>
                     <span class="input-group-text"><i class="fa-solid fa-ranking-star"></i></span>
                 </div>
@@ -135,10 +151,6 @@
             </div>
         </form>
     </div>
-
-    <p class="text-center">
-        <a href="/customer"><i class="fa-solid fa-backward"></i> Back to Customer list</a>
-    </p>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"

@@ -7,7 +7,7 @@ public class Customer {
     private int customerGender;
     private String customerIdCard;
     private String customerPhone;
-    private String customerMail;
+    private String customerEmail;
     private String customerAddress;
     private int customerTypeId;
 
@@ -21,7 +21,7 @@ public class Customer {
         this.customerGender = customerGender;
         this.customerIdCard = customerIdCard;
         this.customerPhone = customerPhone;
-        this.customerMail = customerMail;
+        this.customerEmail = customerMail;
         this.customerAddress = customerAddress;
         this.customerTypeId = customerTypeId;
     }
@@ -34,7 +34,7 @@ public class Customer {
         this.customerGender = customerGender;
         this.customerIdCard = customerIdCard;
         this.customerPhone = customerPhone;
-        this.customerMail = customerMail;
+        this.customerEmail = customerMail;
         this.customerAddress = customerAddress;
         this.customerTypeId = customerTypeId;
     }
@@ -87,12 +87,12 @@ public class Customer {
         this.customerPhone = customerPhone;
     }
 
-    public String getCustomerMail() {
-        return customerMail;
+    public String getCustomerEmail() {
+        return customerEmail;
     }
 
-    public void setCustomerMail(String customerMail) {
-        this.customerMail = customerMail;
+    public void setCustomerEmail(String customerEmail) {
+        this.customerEmail = customerEmail;
     }
 
     public String getCustomerAddress() {

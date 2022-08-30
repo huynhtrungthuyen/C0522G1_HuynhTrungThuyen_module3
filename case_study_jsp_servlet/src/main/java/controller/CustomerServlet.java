@@ -59,18 +59,29 @@ public class CustomerServlet extends HttpServlet {
     }
 
     private void deleteCustomer(HttpServletRequest request, HttpServletResponse response) {
+        int idDelete = Integer.parseInt(request.getParameter("idDelete"));
+        boolean check = iCustomerService.delete(idDelete);
+        String mess = "Delete Customer failed.";
+        if (check) {
+            mess = "Delete Customer successfully.";
+        }
+        request.setAttribute("mess", mess);
+        request.setAttribute("check", check);
+        findAll(request, response);
     }
 
     private void showEditForm(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
-        Customer customer = iCustomerService.findAll().get(id);
+        List<CustomerType> customerTypeList = iCustomerTypeService.findAll();
+        Customer customer = iCustomerService.findById(id);
         RequestDispatcher dispatcher;
 
         if (customer == null) {
             dispatcher = request.getRequestDispatcher("view/error_404.jsp");
         } else {
             request.setAttribute("customer", customer);
-            dispatcher = request.getRequestDispatcher("view/user/edit.jsp");
+            dispatcher = request.getRequestDispatcher("view/customer/edit.jsp");
+            request.setAttribute("customerTypeList", customerTypeList);
         }
 
         try {
@@ -81,7 +92,9 @@ public class CustomerServlet extends HttpServlet {
     }
 
     private void showCreateFrom(HttpServletRequest request, HttpServletResponse response) {
+        List<CustomerType> customerTypeList = iCustomerTypeService.findAll();
         RequestDispatcher dispatcher = request.getRequestDispatcher("view/customer/create.jsp");
+        request.setAttribute("customerTypeList", customerTypeList);
 
         try {
             dispatcher.forward(request, response);
@@ -106,18 +119,39 @@ public class CustomerServlet extends HttpServlet {
             case "edit":
                 updateCustomer(request, response);
                 break;
-            case "delete":
-                removeCustomer(request, response);
-                break;
             default:
                 break;
         }
     }
 
-    private void removeCustomer(HttpServletRequest request, HttpServletResponse response) {
-    }
-
     private void updateCustomer(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        String name = request.getParameter("name");
+        String dayOfBirth = request.getParameter("dateOfBirth");
+        int gender = Integer.parseInt(request.getParameter("gender"));
+        String idCard = request.getParameter("idCard");
+        String phone = request.getParameter("phone");
+        String email = request.getParameter("email");
+        String address = request.getParameter("address");
+        int customerType = Integer.parseInt(request.getParameter("customerType"));
+
+        Customer customer = new Customer(id, name, dayOfBirth, gender, idCard, phone, email, address, customerType);
+
+        boolean check = iCustomerService.edit(customer);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/customer/edit.jsp");
+        String mess = "Update Customer successfully.";
+
+        if (!check) {
+            mess = "Update Customer failed.";
+        }
+        request.setAttribute("mess", mess);
+        request.setAttribute("check", check);
+
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void createCustomer(HttpServletRequest request, HttpServletResponse response) {
@@ -131,9 +165,9 @@ public class CustomerServlet extends HttpServlet {
         int customerType = Integer.parseInt(request.getParameter("customerType"));
 
         Customer customer = new Customer(name, dayOfBirth, gender, idCard, phone, email, address, customerType);
+
         boolean check = iCustomerService.create(customer);
         String mess = "Add new Customer successfully.";
-
         if (!check) {
             mess = "Add new Customer failed.";
         }

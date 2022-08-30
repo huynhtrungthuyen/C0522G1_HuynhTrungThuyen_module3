@@ -14,6 +14,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
     <title>Home</title>
     <style>
+        table {
+            border: solid 3px;
+        }
+
         a {
             text-decoration: none;
         }
@@ -27,12 +31,33 @@
 <div class="p-3">
     <h2 class="text-center fw-bold">CUSTOMER LIST</h2>
 
+    <c:if test="${mess!=null}">
+        <:c:if test="${check}">
+            <div class="justify-content-center d-flex">
+                <div class="alert alert-success alert-dismissible fade show w-50">
+                    <strong>${mess}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            </div>
+        </:c:if>
+
+        <:c:if test="${!check}">
+            <div class="justify-content-center d-flex">
+                <div class="alert alert-danger alert-dismissible fade show w-50">
+                    <strong>${mess}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            </div>
+        </:c:if>
+    </c:if>
+
     <a href="/customer?action=create">
         <button class="btn btn-success btn-sm my-2">
-            <span class="fa-solid fa-person-circle-plus text-light h5 my-auto me-1"></span> Add new Customer</button>
+            <span class="fa-solid fa-person-circle-plus text-light h5 my-auto me-1"></span> Add new Customer
+        </button>
     </a>
 
-    <table class="table table-striped table-bordered border border-1 border-dark">
+    <table class="table table-striped table-bordered">
         <tr class="text-center bg-info">
             <th>Number</th>
             <th>Name</th>
@@ -60,28 +85,63 @@
                 </c:if>
                 <td class="text-center">${customer.customerIdCard}</td>
                 <td class="text-center">${customer.customerPhone}</td>
-                <td>${customer.customerMail}</td>
+                <td>${customer.customerEmail}</td>
                 <td>${customer.customerAddress}</td>
                 <c:forEach var="customerType" items="${customerTypeList}">
                     <c:if test="${customerType.customerTypeId == customer.customerTypeId}">
                         <td class="text-center">${customerType.customerTypeName}</td>
                     </c:if>
                 </c:forEach>
-                <td class="text-center"><a href="/customer?action=edit&id=${customer.getId()}">
+                <td class="text-center"><a href="/customer?action=edit&id=${customer.customerId}">
                     <span class="fa-solid fa-user-pen text-primary h4 m-auto"></span>
                 </a></td>
-                <td class="text-center"><a href="/customer?action=delete&id=${customer.getId()}">
-                    <span class="fa-solid fa-person-circle-minus text-danger h4 m-auto"></span>
-                </a></td>
+                <td class="text-center">
+                    <a href="/customer?action=delete&id=${customer.customerId}" data-bs-toggle="modal"
+                       data-bs-target="#exampleModal"
+                       onclick="deleteCustomer('${customer.getCustomerId()}','${customer.getCustomerName()}')">
+                        <span class="fa-solid fa-person-circle-minus text-danger h4 m-auto"></span>
+                    </a>
+                </td>
             </tr>
         </c:forEach>
     </table>
 
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form action="/customer" method="get">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">You Want To Delete?</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="text" hidden name="idDelete" id="idDelete">
+                        <input type="text" hidden name="action" value="delete">
+                        <strong>Customer: </strong>
+                        <span id="nameDelete"></span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Delete</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <a href="/"><i class="fa-solid fa-house-chimney h5 mx-1"></i> Back to HOME</a>
 </div>
 
+<script>
+    function deleteCustomer(id, name) {
+        document.getElementById("idDelete").value = id;
+        document.getElementById("nameDelete").innerText = name;
+    }
+</script>
+
+</body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
-        crossorigin="anonymous"></script>
-</body>
+        crossorigin="anonymous">
+</script>
 </html>
