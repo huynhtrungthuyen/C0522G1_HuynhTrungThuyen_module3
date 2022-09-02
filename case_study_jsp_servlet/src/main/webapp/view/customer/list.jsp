@@ -58,7 +58,7 @@
         </c:if>
     </c:if>
 
-    <nav class="navbar navbar-expand-lg pb-0 mb-0">
+    <nav class="navbar navbar-expand-lg py-0 my-0">
         <div class="container-fluid">
             <a href="/customer?action=create">
                 <button class="btn btn-success btn-outline-secondary btn-sm">

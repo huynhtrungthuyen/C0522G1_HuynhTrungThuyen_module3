@@ -14,9 +14,9 @@ import java.util.List;
 
 public class FacilityRepository implements IFacilityRepository {
     private static final String FIND_ALL = "select * from facility where is_delete = 0;";
-//    private static final String INSERT = "insert into customer(customer_name, customer_birthday, customer_gender, " +
-//            "customer_id_card, customer_phone, customer_email, customer_address, customer_type_id) " +
-//            "values(?,?,?,?,?,?,?,?);";
+    private static final String INSERT = "insert into facility(facility_name, facility_area, facility_cost, " +
+            "max_people, standard_room, description_other_convenience, pool_area, number_of_floors, facility_free, " +
+            "rent_type_id, facility_type_id) values(?,?,?,?,?,?,?,?,?,?,?);";
 //    private static final String FIND_BY_ID = "select * from customer where customer_id = ? and is_delete = 0;";
 //    private static final String UPDATE = "update customer set customer_name = ?, customer_birthday = ?, " +
 //            "customer_gender = ?, customer_id_card = ?, customer_phone = ?, customer_email = ?, " +
@@ -48,7 +48,8 @@ public class FacilityRepository implements IFacilityRepository {
                 int rentType = resultSet.getInt("rent_type_id");
                 int facilityType = resultSet.getInt("facility_type_id");
 
-                Facility facility = new Facility(id, name, area, cost, maxPeople, standard, description, poolArea, numberOfFloors, facilityFree, rentType, facilityType);
+                Facility facility = new Facility(id, name, area, cost, maxPeople, standard, description, poolArea,
+                        numberOfFloors, facilityFree, rentType, facilityType);
                 facilityList.add(facility);
             }
         } catch (SQLException e) {
@@ -60,6 +61,29 @@ public class FacilityRepository implements IFacilityRepository {
 
     @Override
     public boolean create(Facility facility) {
+        Connection connection = BaseRepository.getConnectDB();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(INSERT);
+
+            preparedStatement.setString(1, facility.getFacilityName());
+            preparedStatement.setInt(2, facility.getArea());
+            preparedStatement.setDouble(3, facility.getCost());
+            preparedStatement.setInt(4, facility.getMaxPeople());
+            preparedStatement.setString(5, facility.getStandardRoom());
+            preparedStatement.setString(6, facility.getDescriptionOtherConvenience());
+            preparedStatement.setDouble(7, facility.getPoolArea());
+            preparedStatement.setInt(8, facility.getNumberOfFloors());
+            preparedStatement.setString(9, facility.getFacilityFree());
+            preparedStatement.setInt(10, facility.getRentTypeId());
+            preparedStatement.setInt(11, facility.getFacilityTypeId());
+
+            int num = preparedStatement.executeUpdate();
+            return (num == 1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         return false;
     }
 
