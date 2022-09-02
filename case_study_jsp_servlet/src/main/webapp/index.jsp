@@ -13,6 +13,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
     <title>Home</title>
     <style>
+        body {
+            background-color: #d1d5e3;
+        }
+
         .myCSS {
             background-color: #8b9fb2;
         }
@@ -50,8 +54,8 @@
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                        aria-expanded="false">Employee</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Employee list</a></li>
-                        <li><a class="dropdown-item" href="#">Add new Employee</a></li>
+                        <li><a class="dropdown-item" href="/employee">Employee list</a></li>
+                        <li><a class="dropdown-item" href="/employee?action=create">Add new Employee</a></li>
                     </ul>
                 </li>
 
@@ -68,8 +72,8 @@
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                        aria-expanded="false">Service</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Facility list</a></li>
-                        <li><a class="dropdown-item" href="#">Add new Facility</a></li>
+                        <li><a class="dropdown-item" href="/facility">Facility list</a></li>
+                        <li><a class="dropdown-item" href="/facility?action=create">Add new Facility</a></li>
                     </ul>
                 </li>
 

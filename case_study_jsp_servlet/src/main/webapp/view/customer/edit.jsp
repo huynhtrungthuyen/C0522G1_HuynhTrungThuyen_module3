@@ -15,7 +15,7 @@
     <title>Update Customer</title>
     <style>
         body {
-            background-color: #B5C8FF;
+            background-color: #ccc9c9;
         }
 
         a {
@@ -40,7 +40,7 @@
     <c:if test="${mess!=null}">
         <c:if test="${check}">
             <div class="justify-content-center d-flex">
-                <div class="alert alert-success alert-dismissible fade show w-50">
+                <div class="alert alert-success alert-dismissible fade show w-50 text-center">
                     <strong>Congratulations!</strong> ${mess}
                     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                 </div>
@@ -49,7 +49,7 @@
 
         <c:if test="${!check}">
             <div class="justify-content-center d-flex">
-                <div class="alert alert-danger alert-dismissible fade show w-50">
+                <div class="alert alert-danger alert-dismissible fade show w-50 text-center">
                     <strong>Sorry!</strong> ${mess}
                     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                 </div>
@@ -65,7 +65,7 @@
                 <label class="h6">Customer:</label>
                 <div class="input-group">
                     <input type="text" class="form-control" name="id" value="${customer.customerId}" readonly>
-                    <span class="input-group-text"> <i class="fa-solid fa-person-circle-question"></i></span>
+                    <span class="input-group-text"><i class="fa-solid fa-person-circle-question"></i></span>
                 </div>
             </div>
 
@@ -95,7 +95,6 @@
                         <i class="fa-solid fa-venus"></i>
                     </label>
                 </div>
-
             </div>
 
             <div class="mt-3 form-group">
@@ -145,7 +144,7 @@
             </div>
 
             <div class="mt-3 text-center">
-                <button class="btn btn-info btn-sm border border-2 border-success">
+                <button class="btn btn-info btn-outline-success btn-sm border border-2 border-success text-dark">
                     -- Save <i class="fa-solid fa-floppy-disk"></i> --
                 </button>
             </div>

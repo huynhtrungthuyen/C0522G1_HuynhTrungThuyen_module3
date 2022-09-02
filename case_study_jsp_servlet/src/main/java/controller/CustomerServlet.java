@@ -29,7 +29,7 @@ public class CustomerServlet extends HttpServlet {
 
         switch (action) {
             case "create":
-                showCreateFrom(request, response);
+                showCreateForm(request, response);
                 break;
             case "edit":
                 showEditForm(request, response);
@@ -37,8 +37,36 @@ public class CustomerServlet extends HttpServlet {
             case "delete":
                 deleteCustomer(request, response);
                 break;
+            case "search":
+                searchCustomer(request, response);
+                break;
             default:
                 findAll(request, response);
+        }
+    }
+
+    private void searchCustomer(HttpServletRequest request, HttpServletResponse response) {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/customer/list.jsp");
+
+        String name = request.getParameter("nameSearch");
+        String address = request.getParameter("addressSearch");
+        String phone = request.getParameter("phoneSearch");
+
+        List<Customer> customerList = iCustomerService.search(name, address, phone);
+        List<CustomerType> customerTypeList = iCustomerTypeService.findAll();
+
+        for (Customer customer : customerList) {
+            String[] arr = customer.getCustomerBirthday().split("-");
+            customer.setCustomerBirthday(arr[2] + "/" + arr[1] + "/" + arr[0]);
+        }
+
+        request.setAttribute("customerList", customerList);
+        request.setAttribute("customerTypeList", customerTypeList);
+
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -47,6 +75,11 @@ public class CustomerServlet extends HttpServlet {
 
         List<Customer> customerList = iCustomerService.findAll();
         List<CustomerType> customerTypeList = iCustomerTypeService.findAll();
+
+        for (Customer customer : customerList) {
+            String[] arr = customer.getCustomerBirthday().split("-");
+            customer.setCustomerBirthday(arr[2] + "/" + arr[1] + "/" + arr[0]);
+        }
 
         request.setAttribute("customerList", customerList);
         request.setAttribute("customerTypeList", customerTypeList);
@@ -91,7 +124,7 @@ public class CustomerServlet extends HttpServlet {
         }
     }
 
-    private void showCreateFrom(HttpServletRequest request, HttpServletResponse response) {
+    private void showCreateForm(HttpServletRequest request, HttpServletResponse response) {
         List<CustomerType> customerTypeList = iCustomerTypeService.findAll();
         RequestDispatcher dispatcher = request.getRequestDispatcher("view/customer/create.jsp");
         request.setAttribute("customerTypeList", customerTypeList);
@@ -175,6 +208,6 @@ public class CustomerServlet extends HttpServlet {
         request.setAttribute("mess", mess);
         request.setAttribute("check", check);
 
-        showCreateFrom(request, response);
+        showCreateForm(request, response);
     }
 }

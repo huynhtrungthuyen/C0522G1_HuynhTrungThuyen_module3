@@ -9,9 +9,11 @@ public interface ICustomerRepository {
 
     boolean create(Customer customer);
 
-    Customer findById(int customerId);
+    Customer findById(int idFind);
 
     boolean edit(Customer customer);
 
-    boolean delete(int customerId);
+    boolean delete(int idDelete);
+
+    List<Customer> search(String nameSearch, String addressSearch, String phoneSearch);
 }

@@ -29,6 +29,7 @@ employee_address varchar(45),
 position_id int,
 education_degree_id int,
 division_id int,
+is_delete bit default 0,
 foreign key(position_id) references `position`(position_id),
 foreign key(education_degree_id) references education_degree(education_degree_id),
 foreign key(division_id) references division(division_id)
@@ -49,6 +50,7 @@ customer_phone varchar(45) not null,
 customer_email varchar(45),
 customer_address varchar(45),
 customer_type_id int,
+is_delete bit default 0,
  foreign key(customer_type_id) references customer_type(customer_type_id)
 );
 
@@ -75,6 +77,7 @@ number_of_floors int,
 facility_free text,
 rent_type_id int,
 facility_type_id int,
+is_delete bit default 0,
 foreign key(rent_type_id) references rent_type(rent_type_id),
 foreign key(facility_type_id) references facility_type(facility_type_id)
 );
@@ -87,6 +90,7 @@ deposit double not null,
 employee_id int,
 customer_id int,
 facility_id int,
+is_delete bit default 0,
 foreign key(employee_id) references employee(employee_id),
 foreign key(customer_id) references customer(customer_id),
 foreign key(facility_id) references facility(facility_id)
@@ -108,10 +112,6 @@ attach_facility_id int,
 foreign key(contract_id) references contract(contract_id),
 foreign key(attach_facility_id) references attach_facility(attach_facility_id)
 );
-
-
-
-
 
 insert into `position`(position_name)
 values
@@ -226,3 +226,13 @@ values
 (1,1,3),
 (2,1,2),
 (2,12,2);
+
+-- delimiter $$
+-- create procedure search_customer(in name_search varchar(45), in id_card_search varchar(45), in customer_type_search int)
+-- begin
+-- 	if (customer_type_search in (select customer_type_id from customer_type)) then
+-- 		select * from customer where is_delete = 0 and customer_name like name_search and customer_id_card like id_card_search and customer_type_id = customer_type_search;
+-- 		else select * from customer where is_delete = 0 and customer_name like name_search and customer_id_card like id_card_search;
+-- 	end if;
+-- end$$
+-- delimiter ;
