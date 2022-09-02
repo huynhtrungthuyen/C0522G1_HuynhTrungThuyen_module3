@@ -58,7 +58,6 @@
         </c:if>
     </c:if>
 
-
     <div class="d-flex justify-content-center">
 
         <form class="w-50 border border-2 border-success p-3 bg-warning rounded" action="/customer?action=create"

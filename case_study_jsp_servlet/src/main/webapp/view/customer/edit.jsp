@@ -57,12 +57,11 @@
         </c:if>
     </c:if>
 
-
     <div class="d-flex justify-content-center">
 
         <form class="w-50 border border-2 border-success p-3 bg-warning rounded" method="post">
             <div class="form-group" hidden>
-                <label class="h6">Customer:</label>
+                <label class="h6">Customer id:</label>
                 <div class="input-group">
                     <input type="text" class="form-control" name="id" value="${customer.customerId}" readonly>
                     <span class="input-group-text"><i class="fa-solid fa-person-circle-question"></i></span>
@@ -73,7 +72,7 @@
                 <label for="name" class="h6">Name:</label>
                 <div class="input-group">
                     <input type="text" id="name" class="form-control" name="name" value="${customer.customerName}">
-                    <span class="input-group-text"> <i class="fa-solid fa-person-circle-question"></i></span>
+                    <span class="input-group-text"><i class="fa-solid fa-person-circle-question"></i></span>
                 </div>
             </div>
 

@@ -68,8 +68,8 @@
             </a>
 
             <form class="d-flex my-2" role="search" action="/facility">
-                <input class="form-control me-2" type="text" placeholder="Input search Facility name"
-                       aria-label="Search" name="nameSearch">
+                <input class="form-control me-2" type="text" placeholder="Input find Service name"
+                       aria-label="Search" name="nameSearch" style="width: 210%">
                 <select class="form-control me-2" name="facilityTypeSearch">
                     <option value="">Facility type</option>
                     <c:forEach var="facilityType" items="${facilityTypeList}">
@@ -89,11 +89,11 @@
             <th>Name</th>
             <th>Area</th>
             <th>Cost</th>
-            <th>Max people</th>
+            <th class="text-center">Max people</th>
             <th>Standard</th>
             <th>Description</th>
             <th>Pool area</th>
-            <th>Number of Floors</th>
+            <th class="text-center">Number of Floors</th>
             <th>Facility Free</th>
             <th>Rent type</th>
             <th>Facility type</th>
@@ -216,7 +216,7 @@
         $('#facilityTable').dataTable({
             "dom": 'lrtip',
             "lengthChange": false,
-            "pageLength": 10
+            "pageLength": 7
         });
     });
 </script>

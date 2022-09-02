@@ -57,15 +57,14 @@
         </c:if>
     </c:if>
 
-
     <div class="d-flex justify-content-center">
 
         <form class="w-50 border border-2 border-success p-3 bg-warning rounded" method="post">
             <div class="form-group" hidden>
-                <label class="h6">Employee:</label>
+                <label class="h6">Employee id:</label>
                 <div class="input-group">
                     <input type="text" class="form-control" name="id" value="${employee.employeeId}" readonly>
-                    <span class="input-group-text"> <i class="fa-solid fa-person-circle-question"></i></span>
+                    <span class="input-group-text"><i class="fa-solid fa-person-circle-question"></i></span>
                 </div>
             </div>
 
