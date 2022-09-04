@@ -8,6 +8,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 
 @WebServlet(name = "ContractServlet", value = "/contract")
@@ -107,6 +108,9 @@ public class ContractServlet extends HttpServlet {
         request.setAttribute("facilityList", facilityList);
         request.setAttribute("employeeList", employeeList);
         request.setAttribute("customerList", customerList);
+
+        LocalDate minAge = LocalDate.now();
+        request.setAttribute("minAge", minAge);
 
         try {
             dispatcher.forward(request, response);

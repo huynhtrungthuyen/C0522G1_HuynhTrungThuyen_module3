@@ -11,6 +11,8 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @WebServlet(name = "CustomerServlet", value = "/customer")
@@ -115,6 +117,11 @@ public class CustomerServlet extends HttpServlet {
             request.setAttribute("customer", customer);
             dispatcher = request.getRequestDispatcher("view/customer/edit.jsp");
             request.setAttribute("customerTypeList", customerTypeList);
+
+            LocalDate minAge = LocalDate.now().minusYears(65);
+            LocalDate maxAge = LocalDate.now().minusYears(18);
+            request.setAttribute("minAge", minAge);
+            request.setAttribute("maxAge", maxAge);
         }
 
         try {
@@ -128,6 +135,11 @@ public class CustomerServlet extends HttpServlet {
         List<CustomerType> customerTypeList = iCustomerTypeService.findAll();
         RequestDispatcher dispatcher = request.getRequestDispatcher("view/customer/create.jsp");
         request.setAttribute("customerTypeList", customerTypeList);
+
+        LocalDate minAge = LocalDate.now().minusYears(65);
+        LocalDate maxAge = LocalDate.now().minusYears(18);
+        request.setAttribute("minAge", minAge);
+        request.setAttribute("maxAge", maxAge);
 
         try {
             dispatcher.forward(request, response);

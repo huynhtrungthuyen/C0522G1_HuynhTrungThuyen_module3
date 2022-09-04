@@ -8,6 +8,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 
 @WebServlet(name = "EmployeeServlet", value = "/employee")
@@ -126,6 +127,11 @@ public class EmployeeServlet extends HttpServlet {
             request.setAttribute("positionList", positionList);
             request.setAttribute("educationDegreeList", educationDegreeList);
             request.setAttribute("divisionList", divisionList);
+
+            LocalDate minAge = LocalDate.now().minusYears(65);
+            LocalDate maxAge = LocalDate.now().minusYears(18);
+            request.setAttribute("minAge", minAge);
+            request.setAttribute("maxAge", maxAge);
         }
 
         try {
@@ -143,6 +149,11 @@ public class EmployeeServlet extends HttpServlet {
         request.setAttribute("positionList", positionList);
         request.setAttribute("educationDegreeList", educationDegreeList);
         request.setAttribute("divisionList", divisionList);
+
+        LocalDate minAge = LocalDate.now().minusYears(65);
+        LocalDate maxAge = LocalDate.now().minusYears(18);
+        request.setAttribute("minAge", minAge);
+        request.setAttribute("maxAge", maxAge);
 
         try {
             dispatcher.forward(request, response);

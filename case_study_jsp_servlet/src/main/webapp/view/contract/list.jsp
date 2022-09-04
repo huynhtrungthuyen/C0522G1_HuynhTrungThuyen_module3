@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="datatables/css/dataTables.bootstrap4.min.css"/>
     <style>
         body {
-            background-color: #e5dbe0;
+            background-image: url("https://i.pinimg.com/originals/86/41/6d/86416d71cbd1e608a5304bb92fc235ea.png");
         }
 
         table {

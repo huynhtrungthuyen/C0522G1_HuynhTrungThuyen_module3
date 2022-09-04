@@ -15,8 +15,11 @@
     <title>Add new Contract</title>
     <style>
         body {
-            background-color: #d0ccd0;
-            /*background-image: url("https://phuonganhviolet.com/wp-content/uploads/2019/02/garden-of-words.jpg");*/
+            background-image: url("https://cdn.wallpapersafari.com/97/50/eRwDMy.jpg");
+        }
+
+        form {
+            background-image: url("https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v960-ning-30.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=63dd5f402645ef52fb7dfb592aec765a");
         }
 
         a {
@@ -25,6 +28,14 @@
 
         a:hover {
             text-decoration: underline;
+        }
+
+        input:invalid {
+            border-color: red;
+        }
+
+        input:valid {
+            border-color: green;
         }
     </style>
 </head>
@@ -64,7 +75,7 @@
               method="post">
             <div class="form-group">
                 <label for="startDay" class="h6">Start day:</label>
-                <input type="date" id="startDay" class="form-control" name="startDay">
+                <input type="date" id="startDay" class="form-control" name="startDay" min="${minAge}" onchange="changeForm(this)">
             </div>
 
             <div class="mt-3 form-group">
@@ -75,7 +86,8 @@
             <div class="mt-3 form-group">
                 <label for="deposit" class="h6">Deposit:</label>
                 <div class="input-group">
-                    <input type="text" id="deposit" class="form-control" placeholder="Input deposit" name="deposit">
+                    <input type="text" id="deposit" class="form-control" placeholder="Input deposit" name="deposit"
+                           required pattern="^[1-9]\d*[.]?\d+$" title="Lương, Giá, Tiền đặt cọc phải là số dương.">
                     <span class="input-group-text"><i class="fa-solid fa-money-bill-wave"></i></span>
                 </div>
             </div>
@@ -133,6 +145,12 @@
         </form>
     </div>
 </div>
+
+<script>
+    function changeForm(x) {
+        document.getElementById("endDay").min = x.value;
+    }
+</script>
 
 <script>
     function changeCost(fac) {

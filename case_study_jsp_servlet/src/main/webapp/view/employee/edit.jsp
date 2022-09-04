@@ -15,7 +15,11 @@
     <title>Update Employee</title>
     <style>
         body {
-            background-color: #ccc9c9;
+            background-image: url("https://cdn.wallpapersafari.com/97/50/eRwDMy.jpg");
+        }
+
+        form {
+            background-image: url("https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v960-ning-30.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=63dd5f402645ef52fb7dfb592aec765a");
         }
 
         a {
@@ -24,6 +28,14 @@
 
         a:hover {
             text-decoration: underline;
+        }
+
+        input:invalid {
+            border-color: red;
+        }
+
+        input:valid {
+            border-color: green;
         }
     </style>
 </head>
@@ -71,7 +83,9 @@
             <div class="form-group">
                 <label for="name" class="h6">Name:</label>
                 <div class="input-group">
-                    <input type="text" id="name" class="form-control" name="name" value="${employee.employeeName}">
+                    <input type="text" id="name" class="form-control" name="name" value="${employee.employeeName}"
+                           required pattern="^[A-Z][a-z]+( [A-Z][a-z]*)+$"
+                           title="Tên nhân viên không được chứa số và các kí tự đầu tiên của mỗi từ phải viết hoa.">
                     <span class="input-group-text"><i class="fa-solid fa-person-circle-question"></i></span>
                 </div>
             </div>
@@ -79,14 +93,15 @@
             <div class="mt-3 form-group">
                 <label for="dateOfBirth" class="h6">Date of Birth:</label>
                 <input type="date" id="dateOfBirth" class="form-control" name="dateOfBirth"
-                       value="${employee.employeeBirthday}">
+                       value="${employee.employeeBirthday}" min="${minAge}" max="${maxAge}">
             </div>
 
             <div class="mt-3 form-group">
                 <label for="idCard" class="h6">Id card:</label>
                 <div class="input-group">
                     <input type="text" id="idCard" class="form-control" name="idCard"
-                           value="${employee.employeeIdCard}">
+                           value="${employee.employeeIdCard}" required pattern="^\d{9}|\d{12}$"
+                           title="Số CMND phải đúng định dạng XXXXXXXXX hoặc XXXXXXXXXXXX (X là số 0-9).">
                     <span class="input-group-text"><i class="fa-solid fa-id-card"></i></span>
                 </div>
             </div>
@@ -95,7 +110,8 @@
                 <label for="salary" class="h6">Salary:</label>
                 <div class="input-group">
                     <input type="text" id="salary" class="form-control" name="salary"
-                           value="${employee.employeeSalary}">
+                           value="${employee.employeeSalary}" required pattern="^[1-9]\d*[.]?\d+$"
+                           title="Lương, Giá, Tiền đặt cọc phải là số dương.">
                     <span class="input-group-text"><i class="fa-solid fa-money-bill-wave"></i></span>
                 </div>
             </div>
@@ -103,7 +119,9 @@
             <div class="mt-3 form-group">
                 <label for="phone" class="h6">Phone number:</label>
                 <div class="input-group">
-                    <input type="text" id="phone" class="form-control" name="phone" value="${employee.employeePhone}">
+                    <input type="text" id="phone" class="form-control" name="phone" value="${employee.employeePhone}"
+                           required pattern="^09[01]\d{7}|[(]84[)][+]9[01]\d{7}$"
+                           title="Số điện thoại phải đúng định dạng 090xxxxxxx hoặc 091xxxxxxx hoặc (84)+90xxxxxxx hoặc (84)+91xxxxxxx.">
                     <span class="input-group-text"><i class="fa-solid fa-square-phone"></i></span>
                 </div>
             </div>
@@ -111,7 +129,10 @@
             <div class="mt-3 form-group">
                 <label for="email" class="h6">Email:</label>
                 <div class="input-group">
-                    <input type="text" id="email" class="form-control" name="email" value="${employee.employeeEmail}">
+                    <input type="text" id="email" class="form-control" name="email" value="${employee.employeeEmail}"
+                           required
+                           pattern="^[_A-Za-z0-9-]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]{2,}(\.[A-Za-z0-9]{2,}){1,2}$"
+                           title="Địa chỉ email phải đúng định dạng.">
                     <span class="input-group-text"><i class="fa-solid fa-envelope-circle-check"></i></span>
                 </div>
             </div>
@@ -120,7 +141,8 @@
                 <label for="address" class="h6">Address:</label>
                 <div class="input-group">
                     <input type="text" id="address" class="form-control" name="address"
-                           value="${employee.employeeAddress}">
+                           value="${employee.employeeAddress}" required pattern="^.+$"
+                           title="Vui lòng không để trống địa chỉ.">
                     <span class="input-group-text"><i class="fa-solid fa-map-location-dot"></i></span>
                 </div>
             </div>

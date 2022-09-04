@@ -15,7 +15,11 @@
     <title>Update Facility</title>
     <style>
         body {
-            background-color: #ccc9c9;
+            background-image: url("https://cdn.wallpapersafari.com/97/50/eRwDMy.jpg");
+        }
+
+        form {
+            background-image: url("https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v960-ning-30.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=63dd5f402645ef52fb7dfb592aec765a");
         }
 
         a {
@@ -24,6 +28,14 @@
 
         a:hover {
             text-decoration: underline;
+        }
+
+        input:invalid {
+            border-color: red;
+        }
+
+        input:valid {
+            border-color: green;
         }
     </style>
 </head>
@@ -85,7 +97,9 @@
             <div class="form-group">
                 <label for="name" class="h6">Facility name:</label>
                 <div class="input-group">
-                    <input type="text" id="name" class="form-control" name="name" value="${facility.facilityName}">
+                    <input type="text" id="name" class="form-control" name="name" value="${facility.facilityName}"
+                           required pattern="^([A-Z][a-z]+ )+\d*$"
+                           title="Tên dịch vụ được phép chứa số và các kí tự đầu tiên của mỗi từ phải viết hoa.">
                     <span class="input-group-text"><i class="fa-solid fa-file-signature"></i></span>
                 </div>
             </div>
@@ -93,7 +107,8 @@
             <div class="mt-3 form-group">
                 <label for="area" class="h6">Area (m<sup>2</sup>):</label>
                 <div class="input-group">
-                    <input type="number" id="area" class="form-control" name="area" value="${facility.area}">
+                    <input type="number" id="area" class="form-control" name="area" value="${facility.area}"
+                           required pattern="^[1-9]\d*$" title="Diện tích dịch vụ phải là số nguyên dương.">
                     <span class="input-group-text"><i class="fa-solid fa-chart-area"></i></span>
                 </div>
             </div>
@@ -101,7 +116,8 @@
             <div class="mt-3 form-group">
                 <label for="cost" class="h6">Cost:</label>
                 <div class="input-group">
-                    <input type="text" id="cost" class="form-control" name="cost" value="${facility.cost}">
+                    <input type="text" id="cost" class="form-control" name="cost" value="${facility.cost}"
+                           required pattern="^[1-9]\d*[.]?\d+$" title="Lương, Giá, Tiền đặt cọc phải là số dương.">
                     <span class="input-group-text"><i class="fa-solid fa-dollar-sign"></i></span>
                 </div>
             </div>
@@ -110,7 +126,8 @@
                 <label for="maxPeople" class="h6">Maximum number of people:</label>
                 <div class="input-group">
                     <input type="number" id="maxPeople" class="form-control" name="maxPeople"
-                           value="${facility.maxPeople}">
+                           value="${facility.maxPeople}" required pattern="^[1-9]\d*$"
+                           title="Số lượng, Số tầng phải là số nguyên dương.">
                     <span class="input-group-text"><i class="fa-solid fa-person"></i></span>
                 </div>
             </div>
@@ -161,7 +178,8 @@
                     <label for="poolArea" class="h6">Pool area (m<sup>2</sup>):</label>
                     <div class="input-group">
                         <input type="text" id="poolArea" class="form-control" name="poolArea"
-                               value="${facility.poolArea}">
+                               value="${facility.poolArea}" required pattern="^0|[1-9]\d*[.]?\d+$"
+                               title="Diện tích hồ bơi phải là số dương.">
                         <span class="input-group-text"><i class="fa-solid fa-person-swimming"></i></span>
                     </div>
                 </div>
@@ -181,7 +199,8 @@
                     <label for="numberOfFloors" class="h6">Number of floors:</label>
                     <div class="input-group">
                         <input type="number" id="numberOfFloors" class="form-control" name="numberOfFloors"
-                               value="${facility.numberOfFloors}">
+                               value="${facility.numberOfFloors}" required pattern="^0|[1-9]\d*$"
+                               title="Số lượng, Số tầng phải là số nguyên dương.">
                         <span class="input-group-text"><i class="fa-solid fa-building"></i></span>
                     </div>
                 </div>
