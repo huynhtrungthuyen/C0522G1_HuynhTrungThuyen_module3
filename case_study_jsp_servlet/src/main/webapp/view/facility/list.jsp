@@ -108,28 +108,28 @@
                 <td class="text-center">${status.count}</td>
                 <td>${facility.facilityName}</td>
                 <td>${facility.area}</td>
-                <td>${facility.cost}</td>
+                <td>₫${String.format("%.0f", facility.cost)}</td>
                 <td class="text-center">${facility.maxPeople}</td>
 
                 <c:if test="${facility.standardRoom!=null}">
                     <td>${facility.standardRoom}</td>
                 </c:if>
                 <c:if test="${facility.standardRoom==null}">
-                    <td> -</td>
+                    <td>-</td>
                 </c:if>
 
                 <c:if test="${facility.descriptionOtherConvenience!=null}">
                     <td>${facility.descriptionOtherConvenience}</td>
                 </c:if>
                 <c:if test="${facility.descriptionOtherConvenience==null}">
-                    <td> -</td>
+                    <td>-</td>
                 </c:if>
 
                 <c:if test="${facility.poolArea!=0}">
                     <td>${facility.poolArea}</td>
                 </c:if>
                 <c:if test="${facility.poolArea==0}">
-                    <td> -</td>
+                    <td>-</td>
                 </c:if>
 
                 <c:if test="${facility.numberOfFloors!=0}">
@@ -143,7 +143,7 @@
                     <td>${facility.facilityFree}</td>
                 </c:if>
                 <c:if test="${facility.facilityFree==null}">
-                    <td> -</td>
+                    <td>-</td>
                 </c:if>
 
                 <c:forEach var="rentType" items="${rentTypeList}">

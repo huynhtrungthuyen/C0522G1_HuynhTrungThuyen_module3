@@ -75,7 +75,7 @@
                         <div class="input-group">
                             <input type="text" value="${facility.facilityTypeId}" name="type" hidden readonly>
                             <input type="text" class="form-control" value="${type.facilityTypeName}"
-                                   readonly>
+                                   readonly style="background-color: #b6bac2">
                             <span class="input-group-text"><i class="fa-solid fa-house-user"></i></span>
                         </div>
                     </div>
@@ -130,7 +130,7 @@
                     <label class="h6">Standard room:</label>
                     <div class="input-group">
                         <input type="text" class="form-control" name="standardRoom"
-                               value=" -">
+                               value="-">
                         <span class="input-group-text"><i class="fa-solid fa-star"></i></span>
                     </div>
                 </div>
@@ -150,7 +150,7 @@
                 <div class="mt-3 form-group" hidden>
                     <label class="h6">Description other convenience:</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" name="description" value=" -">
+                        <input type="text" class="form-control" name="description" value="-">
                         <span class="input-group-text"><i class="fa-solid fa-book"></i></span>
                     </div>
                 </div>
@@ -210,7 +210,7 @@
                 <div class="mt-3 form-group" hidden>
                     <label class="h6">Facility free:</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" name="facilityFree" value=" -">
+                        <input type="text" class="form-control" name="facilityFree" value="-">
                         <span class="input-group-text"><i class="fa-solid fa-gift"></i></span>
                     </div>
                 </div>

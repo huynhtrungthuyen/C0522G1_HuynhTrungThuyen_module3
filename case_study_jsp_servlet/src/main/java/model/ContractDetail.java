@@ -16,6 +16,12 @@ public class ContractDetail {
         this.attachFacilityId = attachFacilityId;
     }
 
+    public ContractDetail(int quanity, int contractId, int attachFacilityId) {
+        this.quanity = quanity;
+        this.contractId = contractId;
+        this.attachFacilityId = attachFacilityId;
+    }
+
     public int getContractDetailId() {
         return contractDetailId;
     }

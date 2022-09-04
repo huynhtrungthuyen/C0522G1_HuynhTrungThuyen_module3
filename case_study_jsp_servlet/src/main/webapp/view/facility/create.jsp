@@ -111,7 +111,7 @@
             <div class="mt-3 form-group" id="standardRoomForm">
                 <label for="standardRoom" class="h6">Standard room:</label>
                 <div class="input-group">
-                    <input type="text" id="standardRoom" class="form-control" name="standardRoom" value=" -">
+                    <input type="text" id="standardRoom" class="form-control" name="standardRoom" value="-">
                     <span class="input-group-text"><i class="fa-solid fa-star"></i></span>
                 </div>
             </div>
@@ -119,7 +119,7 @@
             <div class="mt-3 form-group" id="descriptionForm">
                 <label for="description" class="h6">Description other convenience:</label>
                 <div class="input-group">
-                    <input type="text" id="description" class="form-control" name="description" value=" -">
+                    <input type="text" id="description" class="form-control" name="description" value="-">
                     <span class="input-group-text"><i class="fa-solid fa-book"></i></span>
                 </div>
             </div>
@@ -143,7 +143,7 @@
             <div class="mt-3 form-group" id="facilityFreeForm" style="display: none">
                 <label for="facilityFree" class="h6">Facility free:</label>
                 <div class="input-group">
-                    <input type="text" id="facilityFree" class="form-control" name="facilityFree" value=" -">
+                    <input type="text" id="facilityFree" class="form-control" name="facilityFree" value="-">
                     <span class="input-group-text"><i class="fa-solid fa-gift"></i></span>
                 </div>
             </div>

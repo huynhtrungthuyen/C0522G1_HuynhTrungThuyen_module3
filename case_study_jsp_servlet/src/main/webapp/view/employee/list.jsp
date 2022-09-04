@@ -106,7 +106,7 @@
                 <td>${employee.employeeName}</td>
                 <td>${employee.employeeBirthday}</td>
                 <td>${employee.employeeIdCard}</td>
-                <td>${employee.employeeSalary}</td>
+                <td>₫${String.format("%.0f", employee.employeeSalary)}</td>
                 <td>${employee.employeePhone}</td>
                 <td>${employee.employeeEmail}</td>
                 <td>${employee.employeeAddress}</td>

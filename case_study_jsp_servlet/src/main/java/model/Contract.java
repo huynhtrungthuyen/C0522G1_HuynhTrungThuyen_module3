@@ -2,8 +2,8 @@ package model;
 
 public class Contract {
     private int contractId;
-    private String contractStartDate;
-    private String contractEndDate;
+    private String startDate;
+    private String endDate;
     private double deposit;
     private double totalMoney;
     private int employeeId;
@@ -13,10 +13,22 @@ public class Contract {
     public Contract() {
     }
 
-    public Contract(int contractId, String contractStartDate, String contractEndDate, double deposit, double totalMoney, int employeeId, int customerId, int facilityId) {
+    public Contract(int contractId, String startDate, String endDate, double deposit, double totalMoney, int employeeId,
+                    int customerId, int facilityId) {
         this.contractId = contractId;
-        this.contractStartDate = contractStartDate;
-        this.contractEndDate = contractEndDate;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.deposit = deposit;
+        this.totalMoney = totalMoney;
+        this.employeeId = employeeId;
+        this.customerId = customerId;
+        this.facilityId = facilityId;
+    }
+
+    public Contract(String startDate, String endDate, double deposit, double totalMoney, int employeeId, int customerId,
+                    int facilityId) {
+        this.startDate = startDate;
+        this.endDate = endDate;
         this.deposit = deposit;
         this.totalMoney = totalMoney;
         this.employeeId = employeeId;
@@ -32,20 +44,20 @@ public class Contract {
         this.contractId = contractId;
     }
 
-    public String getContractStartDate() {
-        return contractStartDate;
+    public String getStartDate() {
+        return startDate;
     }
 
-    public void setContractStartDate(String contractStartDate) {
-        this.contractStartDate = contractStartDate;
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
     }
 
-    public String getContractEndDate() {
-        return contractEndDate;
+    public String getEndDate() {
+        return endDate;
     }
 
-    public void setContractEndDate(String contractEndDate) {
-        this.contractEndDate = contractEndDate;
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
     }
 
     public double getDeposit() {

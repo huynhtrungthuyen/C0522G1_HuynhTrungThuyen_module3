@@ -81,8 +81,8 @@
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                        aria-expanded="false">Contract</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Contract list</a></li>
-                        <li><a class="dropdown-item" href="#">Add new Contract</a></li>
+                        <li><a class="dropdown-item" href="/contract">Contract list</a></li>
+                        <li><a class="dropdown-item" href="/contract?action=create">Add new Contract</a></li>
                     </ul>
                 </li>
             </ul>
